@@ -57,35 +57,29 @@ plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
 
-author:
-  name   : "Kyungbin Lee"
-  avatar : "/assets/images/bear.png"
-  bio    : "Forward Deployed Engineer at UiPath"
-  links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://KB0129.github.io"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+# Just the Docs settings
+# See https://just-the-docs.com/docs/configuration/
+color_scheme: nil
 
-footer:
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+# Search
+search_enabled: true
+search:
+  # Split pages into sections that can be searched individually
+  # Supports 1 - 3, default is 2
+  heading_level: 2
+  # Pre-fetch search data
+  pre_fetch: false
+  # Search all tokens
+  tokenize_non_english: false
+
+# Aux links
+aux_links:
+  "GitHub":
+    - "//github.com/KB0129/KB0129.github.io"
+
+# Footer content
+# appears at the bottom of every page's main content
+footer_content: "Copyright &copy; 2025 Kyungbin Lee. Powered by <a href=\"https://jekyllrb.com/\">Jekyll</a> & <a href=\"https://just-the-docs.com/\">Just the Docs</a>."
 
 defaults:
   # _posts
@@ -94,22 +88,9 @@ defaults:
       type: posts
     values:
       layout: default
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: "_pages"
       type: pages
     values:
       layout: default
-      author_profile: true
-
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
