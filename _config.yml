@@ -21,6 +21,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 twitter_username: username
 github_username: username
+url: "https://kb0129.github.io" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
 search_enabled: true
 
 # Build settings
@@ -53,13 +55,13 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - jemoji
+  # - jemoji
   - jekyll-include-cache
   - jekyll-remote-theme
 
 # Just the Docs settings
 # See https://just-the-docs.com/docs/configuration/
-color_scheme: nil
+color_scheme: teal_orange
 
 # Search
 search_enabled: true

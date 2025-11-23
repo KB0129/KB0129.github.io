@@ -1,0 +1,31 @@
+// Custom teal and orange color scheme
+// Inspired by the user's uploaded image
+
+// Define custom colors based on the image
+$teal-000: #18b5b5;      // Bright teal for links
+$teal-100: #179a9a;      // Medium teal 
+$teal-200: #147f7f;      // Dark teal
+$teal-300: #0d5959;      // Darker teal
+
+$orange-000: #ff7043;    // Bright orange for accents
+$orange-100: #ff5722;    // Medium orange
+$orange-200: #f4511e;    // Dark orange
+
+// Override theme variables
+$link-color: $teal-000;
+$btn-primary-color: $teal-000;
+$base-button-color: #f7f7f7;
+
+// Code blocks
+$code-background-color: #f5f6fa;
+$border-color: $teal-100;
+
+// Sidebar and navigation
+$sidebar-color: #fafafa;
+$nav-child-link-color: $teal-200;
+$search-background-color: #ffffff;
+$search-result-preview-color: #7a7a7a;
+
+// Table colors
+$table-background-color: #ffffff;
+$feedback-color: $orange-000;
