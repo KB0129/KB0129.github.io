@@ -59,7 +59,7 @@ plugins:
 
 author:
   name   : "Kyungbin Lee"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/bear.png"
   bio    : "Forward Deployed Engineer at UiPath"
   links:
     - label: "Website"

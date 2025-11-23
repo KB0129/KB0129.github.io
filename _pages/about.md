@@ -3,6 +3,19 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Hello! I'm **Kyungbin Lee**, a Forward Deployed Engineer.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+This blog is my digital garden where I share my journey in software engineering and technology. 
+
+## What I Write About
+
+I cover a wide range of technical topics, including:
+
+- **Software Engineering**: Best practices, design patterns, and architecture.
+- **Problem Solving**: Algorithms, data structures, and tackling complex challenges.
+- **New Technologies**: Exploring the latest tools and frameworks in the tech world.
+- **Career Growth**: Insights and lessons learned from my professional journey.
+
+My goal is to document what I learn and share it with the community. Whether you're a beginner or an experienced developer, I hope you find something useful here.
+
+Thanks for visiting!
