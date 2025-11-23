@@ -1,31 +1,42 @@
-// Custom teal and orange color scheme
-// Inspired by the user's uploaded image
+// Custom Tierra Whack inspired color scheme
+// Colors extracted from uploaded image
 
-// Define custom colors based on the image
-$teal-000: #18b5b5;      // Bright teal for links
-$teal-100: #179a9a;      // Medium teal 
-$teal-200: #147f7f;      // Dark teal
-$teal-300: #0d5959;      // Darker teal
-
-$orange-000: #ff7043;    // Bright orange for accents
-$orange-100: #ff5722;    // Medium orange
-$orange-200: #f4511e;    // Dark orange
+// Define custom colors
+$slate-dark: #446063; // Dark Slate - Good for sidebar/text
+$orange-soft: #F3966C; // Soft Orange
+$yellow-warm: #FDCB4D; // Warm Yellow
+$pink-salmon: #EF7A7C; // Salmon Pink
+$white-off: #F9FAFA; // Off White
 
 // Override theme variables
-$link-color: $teal-000;
-$btn-primary-color: $teal-000;
-$base-button-color: #f7f7f7;
 
-// Code blocks
-$code-background-color: #f5f6fa;
-$border-color: $teal-100;
+// Links
+$link-color: $pink-salmon;
+$link-color-visited: darken($pink-salmon, 10%);
+$link-color-hover: darken($pink-salmon, 15%);
 
-// Sidebar and navigation
-$sidebar-color: #fafafa;
-$nav-child-link-color: $teal-200;
-$search-background-color: #ffffff;
-$search-result-preview-color: #7a7a7a;
+// Navigation / Sidebar
+$nav-child-link-color: $slate-dark;
+$sidebar-color: $white-off;
+$sidebar-link-color: $slate-dark;
+$sidebar-link-active-color: $pink-salmon;
 
-// Table colors
-$table-background-color: #ffffff;
-$feedback-color: $orange-000;
+// Buttons
+$btn-primary-color: $slate-dark;
+$btn-primary-background-color: $yellow-warm;
+
+// Site Header
+$site-title-color: $slate-dark;
+
+// Content
+$body-text-color: #333333;
+$body-background-color: #ffffff;
+$code-background-color: $white-off;
+$border-color: lighten($slate-dark, 50%);
+
+// Search
+$search-background-color: $white-off;
+$search-result-preview-color: $slate-dark;
+
+// Feedback / Accents
+$feedback-color: $orange-soft;

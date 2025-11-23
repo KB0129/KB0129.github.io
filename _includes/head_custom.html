@@ -1,0 +1,9 @@
+<script>
+    // Fix logo link to point to About page
+    document.addEventListener("DOMContentLoaded", function () {
+        var logo = document.querySelector('.site-title');
+        if (logo) {
+            logo.setAttribute('href', '/about/');
+        }
+    });
+</script>
