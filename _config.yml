@@ -21,12 +21,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 twitter_username: username
 github_username: username
-minimal_mistakes_skin: default
-search: true
+search_enabled: true
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: just-the-docs/just-the-docs
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -93,7 +92,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
+      layout: default
       author_profile: true
       read_time: true
       comments: true
@@ -104,7 +103,7 @@ defaults:
       path: "_pages"
       type: pages
     values:
-      layout: single
+      layout: default
       author_profile: true
 
 category_archive:
