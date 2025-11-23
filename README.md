@@ -1,5 +1,7 @@
-# Dev Log
+# UiPath Agentic Automation Technical Blog
 
-This is the source code for my developer blog, hosted on GitHub Pages.
+I'm **Kyungbin Lee**, a Forward Deployed Engineer at UiPath.
+This blog is where I share my technical insights on Agentic Automation and my journey as an engineer.
+
 Powered by [Jekyll](https://jekyllrb.com/) and [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/).
 
