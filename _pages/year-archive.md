@@ -1,6 +1,17 @@
 ---
-title: "Posts by Year"
+layout: default
+title: "Posts"
 permalink: /posts/
-layout: posts
-author_profile: true
+nav_order: 2
 ---
+
+# Posts
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <span class="fs-2"> - {{ post.date | date_to_string }}</span>
+    </li>
+  {% endfor %}
+</ul>
