@@ -1,43 +1,56 @@
-/* Palantir-inspired Dark Theme */
+/* Palantir-inspired Dark Theme (Gotham Style) */
 
 // Import Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
     --font-family-sans-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-family-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    // Gotham Palette
+    --gotham-bg: #111214;
+    /* Deep, almost black gray */
+    --gotham-bg-lighter: #1C1E21;
+    /* Slightly lighter for headers/cards */
+    --gotham-text: #9CA3AF;
+    /* Muted gray for body text */
+    --gotham-heading: #F3F4F6;
+    /* Bright white/silver for headings */
+    --gotham-accent: #E5E7EB;
+    /* High-contrast Silver (No Blue) */
+    --gotham-border: #2E3238;
+    /* Subtle border color */
 }
 
 body {
     font-family: var(--font-family-sans-serif);
-    background-color: #101010 !important;
-    /* Deep Black */
-    color: #E1E1E1 !important;
-    /* Soft White */
+    background-color: var(--gotham-bg) !important;
+    color: var(--gotham-text) !important;
+    letter-spacing: -0.01em;
+    /* Tighter, more technical feel */
 }
 
 // Header
 .site-header {
-    background-color: #181818 !important;
-    /* Slightly lighter black */
-    border-bottom: 1px solid #333 !important;
+    background-color: var(--gotham-bg-lighter) !important;
+    border-bottom: 1px solid var(--gotham-border) !important;
 }
 
 .site-title {
-    color: #FFFFFF !important;
+    color: var(--gotham-heading) !important;
     font-weight: 600;
     letter-spacing: -0.5px;
 }
 
 // Navigation
 .nav-list .nav-list-item .nav-list-link {
-    color: #A0A0A0 !important;
+    color: #9CA3AF !important;
+    /* Even more muted for inactive links */
 }
 
 .nav-list .nav-list-item .nav-list-link:hover,
 .nav-list .nav-list-item .nav-list-link.active {
-    color: #2962FF !important;
-    /* Accent Blue */
+    color: var(--gotham-accent) !important;
 }
 
 // Content
@@ -47,36 +60,58 @@ body {
 .main-content h4,
 .main-content h5,
 .main-content h6 {
-    color: #FFFFFF !important;
+    color: var(--gotham-heading) !important;
     font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.main-content p {
+    line-height: 1.6;
+    color: var(--gotham-text) !important;
 }
 
 .main-content a {
-    color: #2962FF !important;
+    color: var(--gotham-accent) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
+.main-content a:hover {
+    color: #FFFFFF !important;
+    text-decoration: underline;
+}
+
+// Code Blocks
 .main-content code {
-    background-color: #202020 !important;
+    background-color: #1A1C1E !important;
     color: #E1E1E1 !important;
-    border: 1px solid #333 !important;
+    border: 1px solid var(--gotham-border) !important;
     font-family: var(--font-family-monospace);
+    font-size: 0.9em;
 }
 
 .main-content pre {
-    background-color: #151515 !important;
-    border: 1px solid #333 !important;
+    background-color: #151618 !important;
+    border: 1px solid var(--gotham-border) !important;
+    border-radius: 4px;
 }
 
 // Search
 .search-input {
-    background-color: #202020 !important;
-    color: #FFFFFF !important;
-    border: 1px solid #444 !important;
+    background-color: #1A1C1E !important;
+    color: var(--gotham-heading) !important;
+    border: 1px solid var(--gotham-border) !important;
+    border-radius: 4px;
+}
+
+.search-input:focus {
+    border-color: var(--gotham-accent) !important;
+    box-shadow: 0 0 0 2px rgba(75, 145, 226, 0.2) !important;
 }
 
 // Footer
 .site-footer {
-    background-color: #101010 !important;
-    color: #888 !important;
-    border-top: 1px solid #333 !important;
+    background-color: var(--gotham-bg) !important;
+    color: #6B7280 !important;
+    border-top: 1px solid var(--gotham-border) !important;
 }
