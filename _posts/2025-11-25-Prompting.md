@@ -1,3 +1,14 @@
+---
+layout: default
+title: "My Deep Dive into Prompt Engineering: Thoughts on Google’s Latest"
+date: 2025-11-25
+categories:
+  - Knowledge Base
+tags:
+  - AI Engineering
+  - Prompt Engineering
+---
+
 # My Deep Dive into Prompt Engineering: Thoughts on Google’s Latest Guide
 
 [cite_start]I recently spent some time with a whitepaper on Prompt Engineering by Lee Boonstra from Google, and I wanted to share my takeaways[cite: 2, 4]. [cite_start]What I loved about this read is that it reinforces the idea that you don't need to be a data scientist to write a prompt—everyone can do it[cite: 28]. [cite_start]However, crafting *effective* prompts is an iterative process that requires understanding how the model actually predicts the next token[cite: 32, 41].
@@ -44,3 +55,6 @@ If you take anything away from this review, let it be these tips from the "Best 
 
 ## Final Thoughts
 [cite_start]The biggest takeaway for me is that prompt engineering is an **iterative process**[cite: 599]. You have to tinker, test, and refine. [cite_start]Whether you are using simple zero-shot prompts or complex reasoning chains like ReAct, the goal is always to guide the prediction engine to the right sequence of tokens[cite: 41].
+
+## References
+- Boonstra, L. (Google). *Prompt Engineering Whitepaper*. [Available on Google Drive](https://drive.google.com/file/d/1AbaBYbEa_EbPelsT40-vj64L-2IwUJHy/view?pli=1)
