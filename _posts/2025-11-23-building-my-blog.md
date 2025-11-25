@@ -7,7 +7,6 @@ categories:
 tags:
   - GitHub Pages
   - Jekyll
-  - Minimal Mistakes
 ---
 
 Building a personal blog is a great way to share knowledge and build your online presence. In this guide, I'll walk you through the entire process of creating a blog using **GitHub Pages** and **Jekyll**, starting from absolutely nothing.
@@ -158,5 +157,3 @@ Wait a minute or two, then visit `https://username.github.io`. Your blog is now 
 
 - **404 Error**: Make sure your repository is named exactly `username.github.io`.
 - **Ruby Errors**: Ensure you have a compatible Ruby version installed. Using `rbenv` or `rvm` is recommended.
-
-Happy blogging!
