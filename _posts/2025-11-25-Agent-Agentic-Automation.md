@@ -3,7 +3,8 @@ title: "UiPath Agentic Automation — Short Summary of Best Practices"
 date: 2025-11-25
 layout: post
 description: "Concise summary of core design, prompt engineering, evaluation, and governance principles for UiPath Agentic Automation."
-categories: Knowledge Base
+categories:
+  - UiPath
 tags: [uipath, agentic-automation, maestro, rpa]
 ---
 
