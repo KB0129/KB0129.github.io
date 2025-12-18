@@ -1,6 +1,6 @@
 # UiPath Coded Agent: First Project Setup (Practical Guide)
 
-> **Audience**: AI / ML / Data Engineers exploring *UiPath Coded Agents* with LangChain & LangGraph  
+> **Audience**: AI / ML Engineers exploring *UiPath Coded Agents* with LangChain & LangGraph  
 > **Goal**: Build and run your **first production-ready Coded Agent** locally, using the official UiPath SDK
 
 ---
