@@ -33,10 +33,11 @@ Before starting, ensure you have the following environment set up:
 
 It is recommended to use `uv` for package management.
 
-To initialize a new project:
+To initialize a new project and install the SDK:
 
 ```bash
 uv init
+uv add uipath-mcp
 ```
 
 ## Create Your First UiPath Coded MCP Server
@@ -68,7 +69,21 @@ This will create:
 
 ## Authenticate With UiPath
 
-You will need to configure your authentication credentials in the `.env` file or via environment variables to interact with Orchestrator.
+You need to authenticate to interact with Orchestrator. You can do this easily via the CLI.
+
+For standard production environments:
+
+```bash
+uipath auth
+```
+
+If you are using a staging environment:
+
+```bash
+uipath auth --staging
+```
+
+This command will prompt you to log in via your browser. Alternatively, you can manually configure credentials in the `.env` file.
 
 ## Run the MCP Server
 
