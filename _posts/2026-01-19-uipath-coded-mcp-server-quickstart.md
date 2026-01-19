@@ -77,12 +77,6 @@ For standard production environments:
 uipath auth
 ```
 
-If you are using a staging environment:
-
-```bash
-uipath auth --staging
-```
-
 This command will prompt you to log in via your browser. Alternatively, you can manually configure credentials in the `.env` file.
 
 ## Run the MCP Server
