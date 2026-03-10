@@ -61,7 +61,7 @@ plugins:
 
 # Just the Docs settings
 # See https://just-the-docs.com/docs/configuration/
-color_scheme: dark
+color_scheme: light
 
 # Search
 search_enabled: true
