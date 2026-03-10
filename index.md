@@ -4,6 +4,9 @@ title: Home
 ---
 
 <div style="text-align: center; margin: 2rem 0 4rem 0;">
+  <div style="margin-bottom: 2rem;">
+    <img src="/assets/images/gpt-profile.png" alt="Kyungbin Lee" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; box-shadow: 0 4px 12px rgba(20, 20, 19, 0.15); border: 3px solid #ffffff;">
+  </div>
   <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: -0.02em; font-family: 'Crimson Pro', serif; color: #141413;">Dev Log</h1>
   <p style="font-size: 1.15rem; color: #6b6963; font-family: 'Crimson Pro', serif; margin-bottom: 2.5rem; font-weight: 400;">
     Exploring software engineering and technology
