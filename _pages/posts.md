@@ -2,7 +2,6 @@
 layout: default
 title: "Posts"
 permalink: /posts/
-nav_order: 2
 ---
 
 # All Posts
