@@ -2,6 +2,7 @@
 layout: default
 permalink: /about/
 title: "About"
+nav_order: 3
 ---
 
 <div style="text-align: center; margin-bottom: 2rem;">
