@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} - {{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+
+  <!-- Custom Notion-inspired CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  {% include head_custom.html %}
+
+  {% if site.head_custom %}{% include head_custom.html %}{% endif %}
 </head>
 <body>
+  <!-- Notion-style Header -->
   <header class="site-header-custom">
     <div class="header-container">
-      <div class="site-branding">
-        <a href="{{ '/' | relative_url }}" class="site-title-custom">{{ site.title }}</a>
-      </div>
+      <a href="{{ '/' | relative_url }}" class="site-title-custom">{{ site.title }}</a>
       <nav class="main-navigation">
         <ul class="nav-menu">
           <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
@@ -23,12 +26,14 @@
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="main-content-custom">
     <div class="content-wrapper">
       {{ content }}
     </div>
   </main>
 
+  <!-- Notion-style Footer -->
   <footer class="site-footer-custom">
     <div class="footer-container">
       {{ site.footer_content }}

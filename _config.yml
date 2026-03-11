@@ -27,7 +27,7 @@ search_enabled: true
 
 # Build settings
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs
+# remote_theme: just-the-docs/just-the-docs # Disabled - using custom Notion-inspired design
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -59,29 +59,12 @@ plugins:
   - jekyll-include-cache
   - jekyll-remote-theme
 
-# Just the Docs settings
-# See https://just-the-docs.com/docs/configuration/
-color_scheme: light
-
-# Search
-search_enabled: true
-search:
-  # Split pages into sections that can be searched individually
-  # Supports 1 - 3, default is 2
-  heading_level: 2
-  # Pre-fetch search data
-  pre_fetch: false
-  # Search all tokens
-  tokenize_non_english: false
-
-# Aux links
-aux_links:
-  "GitHub":
-    - "//github.com/KB0129/KB0129.github.io"
+# Custom site settings
+# search_enabled: false  # Disabled for custom theme
 
 # Footer content
 # appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2025 Kyungbin Lee. Powered by <a href=\"https://jekyllrb.com/\">Jekyll</a> & <a href=\"https://just-the-docs.com/\">Just the Docs</a>."
+footer_content: "Copyright &copy; 2025 Kyungbin Lee."
 
 defaults:
   # _posts
