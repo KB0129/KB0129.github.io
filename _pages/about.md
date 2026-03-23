@@ -5,7 +5,7 @@ title: "About"
 ---
 
 <div style="text-align: center; margin-bottom: 2rem;">
-  <img src="/assets/images/gpt-profile.png" alt="Kyungbin Lee" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <img src="/assets/images/pinn-profile.png" alt="Kyungbin Lee" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 </div>
 
 Hello! I'm **Kyungbin Lee**, a Forward Deployed Engineer.
