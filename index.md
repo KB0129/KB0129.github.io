@@ -5,7 +5,7 @@ title: Home
 
 <div class="home-hero">
   <div class="profile-image-wrapper">
-    <img src="/assets/images/gpt-profile.png" alt="Kyungbin Lee">
+    <img src="/assets/images/pinn-profile.png" alt="Kyungbin Lee">
   </div>
   <h1 class="hero-title">Dev Log</h1>
   <p class="hero-subtitle">
