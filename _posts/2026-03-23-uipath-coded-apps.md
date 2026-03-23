@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "UiPath Conversational Agent Web Application"
+title: "Building a Conversational AI Application with UiPath"
 date: 2026-03-23
 categories: [UiPath, React, TypeScript]
 excerpt: "A modern ChatGPT-like web application built with React and UiPath Conversational Agent SDK, enabling AI-powered conversational experiences with UiPath's automation platform."
 ---
 
-# UiPath Conversational Agent Web Application
+# Building a Conversational AI Application with UiPath
 
 A modern ChatGPT-like web application built with React and UiPath Conversational Agent SDK, enabling AI-powered conversational experiences with UiPath's automation platform.
 
@@ -14,16 +14,12 @@ A modern ChatGPT-like web application built with React and UiPath Conversational
 
 This application provides a full-featured chat interface integrated with UiPath's Conversational Agent SDK, allowing users to interact with AI agents that can execute automation workflows and provide intelligent responses.
 
-**Version**: 1.0.2
-**App Name**: acn-cs-demo-v4
-**App Version**: 1.0.4
-
 ## Tech Stack
 
-- **Frontend**: React 18.3.1 + TypeScript 5.9.3
-- **Build Tool**: Vite 6.4.1
-- **SDK**: UiPath Conversational Agent SDK 0.7.7
-- **CLI**: UiPath TypeScript CLI 1.0.0-beta.7
+- **Frontend**: React + TypeScript
+- **Build Tool**: Vite
+- **SDK**: UiPath Conversational Agent SDK
+- **CLI**: UiPath TypeScript CLI
 - **UI Features**: Markdown rendering, syntax highlighting, file upload, theme toggle
 - **Communication**: WebSocket (Socket.io)
 
@@ -35,14 +31,14 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 # UiPath Cloud Configuration
-VITE_CLOUD_URL=https://staging.uipath.com
+VITE_CLOUD_URL=https://cloud.uipath.com
 VITE_ORG_ID=your-organization-id
 VITE_TENANT_ID=your-tenant-id
 VITE_ACCESS_TOKEN=your-access-token
 
 # UiPath SDK Configuration
 UIPATH_ACCESS_TOKEN=your-jwt-token
-UIPATH_BASE_URL=https://staging.uipath.com
+UIPATH_BASE_URL=https://cloud.uipath.com
 UIPATH_TENANT_ID=your-tenant-id
 UIPATH_ORG_ID=your-organization-id
 UIPATH_TENANT_NAME=your-tenant-name
@@ -58,20 +54,20 @@ UIPATH_APP_REDIRECT_URI=your-redirect-uri
 
 | Variable | Description |
 |----------|-------------|
-| `VITE_CLOUD_URL` | UiPath cloud instance URL (production or staging) |
-| `VITE_ORG_ID` | Organization ID from UiPath Cloud (found in URL) |
+| `VITE_CLOUD_URL` | UiPath cloud instance URL |
+| `VITE_ORG_ID` | Organization ID from UiPath Cloud |
 | `VITE_TENANT_ID` | Tenant ID from Orchestrator settings |
-| `VITE_ACCESS_TOKEN` | Pre-obtained access token for authentication |
+| `VITE_ACCESS_TOKEN` | Access token for authentication |
 | `UIPATH_ACCESS_TOKEN` | JWT token for SDK authentication |
 | `UIPATH_FOLDER_KEY` | Folder key for resource access |
-| `UIPATH_APP_URL` | Production app URL |
+| `UIPATH_APP_URL` | Application URL |
 | `UIPATH_APP_REDIRECT_URI` | OAuth redirect URI |
 
 ### Vite Configuration
 
-The application uses custom Vite configuration ([vite.config.ts](vite.config.ts)):
+The application uses custom Vite configuration:
 
-- **Base Path**: `./` (relative paths for deployment)
+- **Base Path**: Relative paths for deployment
 - **Dev Server**: Port 3000 with auto-open
 - **Path Alias**: `@` → `./src`
 - **Output**: `dist` directory with sourcemaps
@@ -80,13 +76,11 @@ The application uses custom Vite configuration ([vite.config.ts](vite.config.ts)
 
 ### 1. Install SDK
 
-Install the UiPath TypeScript CLI globally:
+Install the UiPath TypeScript CLI globally from your SDK package:
 
 ```bash
-npm i -g "[Zip File Folder Path]"
+npm i -g "[SDK-Package-Path]"
 ```
-
-The SDK package is typically named `uipath-ts-cli-1.0.0`.
 
 ### 2. Authenticate with UiPath
 
@@ -186,7 +180,7 @@ uipath deploy
 ## Project Structure
 
 ```
-CAS_SDK_Test/
+your-app/
 ├── src/
 │   ├── components/
 │   │   ├── auth/              # Authentication components
@@ -228,9 +222,6 @@ CAS_SDK_Test/
 │   └── chatgpt-style.css      # Chat-specific styles
 ├── .uipath/
 │   └── app.config.json        # UiPath app configuration
-├── sdk/                       # Local SDK packages
-│   ├── uipath-conversational-agent-sdk-0.7.7/
-│   └── uipath-uipath-ts-cli-1.0.0-beta.7/
 ├── .env                       # Environment variables
 ├── vite.config.ts            # Vite configuration
 ├── package.json              # Dependencies
@@ -256,10 +247,7 @@ CAS_SDK_Test/
 
 3. Configure environment variables in `.env`
 
-4. Install UiPath SDK globally:
-   ```bash
-   npm i -g "./sdk/uipath-uipath-ts-cli-1.0.0-beta.7/package"
-   ```
+4. Install UiPath SDK globally from your SDK package
 
 5. Authenticate with UiPath:
    ```bash
@@ -321,7 +309,6 @@ npm run type-check
 
 ## Important Notes
 
-- The SDK packages are included locally in the `sdk/` directory
 - Access tokens expire and need to be refreshed periodically
 - The application requires proper UiPath Cloud permissions
 - WebSocket connection requires appropriate CORS configuration
