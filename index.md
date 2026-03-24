@@ -25,30 +25,35 @@ title: Home
 
 <div class="post-list">
 {% for post in recent_posts %}
-    <article class="post-item">
-      <h3 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-      <div class="post-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: "%B %d, %Y" }}
-        </time>
-        {% if post.categories.size > 0 %}
-          <span class="separator">•</span>
-          <span class="categories">
-            {% for category in post.categories %}
-              {{ category }}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-          </span>
-        {% endif %}
-      </div>
-      {% if post.excerpt %}
-        <div class="post-excerpt">
-          {{ post.excerpt | strip_html | truncatewords: 40 }}
+  <article class="post-item">
+    <div class="post-item-header">
+      {% if post.categories.size > 0 %}
+        <div class="post-item-tags">
+          {% for category in post.categories limit:3 %}
+            <span class="post-item-tag">{{ category }}</span>
+          {% endfor %}
         </div>
       {% endif %}
-    </article>
-  {% endfor %}
+      <time class="post-item-date" datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%b %d, %Y" }}
+      </time>
+    </div>
+
+    <h3 class="post-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h3>
+
+    {% if post.excerpt %}
+      <div class="post-excerpt">
+        {{ post.excerpt | strip_html | truncatewords: 40 }}
+      </div>
+    {% endif %}
+
+    <div class="post-item-footer">
+      <a href="{{ post.url | relative_url }}" class="read-more-link">Read article →</a>
+    </div>
+  </article>
+{% endfor %}
 </div>
 
 <div class="view-all-link">
