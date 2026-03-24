@@ -23,8 +23,8 @@ title: Home
 
 {% assign recent_posts = site.posts | sort: 'date' | reverse | limit: 5 %}
 
-  <div class="post-list">
-  {% for post in recent_posts %}
+<div class="post-list">
+{% for post in recent_posts %}
     <article class="post-item">
       <h3 class="post-title">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -49,9 +49,8 @@ title: Home
       {% endif %}
     </article>
   {% endfor %}
-  </div>
+</div>
 
-  <div class="view-all-link">
-    <a href="{{ '/posts/' | relative_url }}">View All Posts →</a>
-  </div>
+<div class="view-all-link">
+  <a href="{{ '/posts/' | relative_url }}">View All Posts →</a>
 </div>
