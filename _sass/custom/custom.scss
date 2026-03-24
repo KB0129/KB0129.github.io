@@ -1,7 +1,48 @@
-/* Notion-Inspired Blog Design - Modern, Warm, Professional */
+/* Notion-Inspired Blog Design with Dark/Light Theme Support */
 
-// Import Fonts - Notion uses Inter for everything
+// Import Fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ====================================
+   CSS VARIABLES FOR THEME SUPPORT
+   ==================================== */
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F7F6F3;
+    --text-primary: #37352F;
+    --text-secondary: rgba(55, 53, 47, 0.65);
+    --text-tertiary: rgba(55, 53, 47, 0.45);
+    --border-color: rgba(55, 53, 47, 0.09);
+    --border-color-hover: rgba(55, 53, 47, 0.16);
+    --accent-color: rgb(0, 122, 255);
+    --card-bg: #FFFFFF;
+    --code-bg: rgba(135, 131, 120, 0.15);
+    --code-text: #EB5757;
+    --tag-bg: rgba(0, 122, 255, 0.08);
+    --tag-text: rgb(0, 122, 255);
+    --shadow-sm: rgba(15, 15, 15, 0.1);
+    --shadow-md: rgba(15, 15, 15, 0.2);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Colors */
+    --bg-primary: #191919;
+    --bg-secondary: #2F2F2F;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-tertiary: rgba(255, 255, 255, 0.45);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-hover: rgba(255, 255, 255, 0.2);
+    --accent-color: #52A9FF;
+    --card-bg: #252525;
+    --code-bg: rgba(255, 255, 255, 0.1);
+    --code-text: #FF6B6B;
+    --tag-bg: rgba(82, 169, 255, 0.15);
+    --tag-text: #52A9FF;
+    --shadow-sm: rgba(0, 0, 0, 0.3);
+    --shadow-md: rgba(0, 0, 0, 0.5);
+}
 
 /* ====================================
    RESET & BASE STYLES
@@ -14,25 +55,62 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: #FFFFFF;
-    color: #37352F;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.6;
     font-size: 16px;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ====================================
-   CUSTOM HEADER - NOTION STYLE
+   THEME TOGGLE BUTTON
+   ==================================== */
+.theme-toggle {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-sm), 0 8px 24px var(--shadow-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px var(--shadow-sm), 0 12px 32px var(--shadow-md);
+}
+
+.theme-toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:active .theme-toggle-icon {
+    transform: rotate(20deg);
+}
+
+/* ====================================
+   CUSTOM HEADER
    ==================================== */
 .site-header-custom {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
     padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     backdrop-filter: saturate(180%) blur(20px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .header-container {
@@ -48,13 +126,14 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    color: #37352F;
+    color: var(--text-primary);
     text-decoration: none;
     letter-spacing: -0.01em;
+    transition: color 0.2s ease;
 }
 
 .site-title-custom:hover {
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
 }
 
 .main-navigation {
@@ -74,7 +153,7 @@ body {
 }
 
 .nav-menu a {
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -85,8 +164,8 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: #37352F;
-    background-color: rgba(55, 53, 47, 0.06);
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
 }
 
 /* ====================================
@@ -110,7 +189,7 @@ body {
    ==================================== */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
-    color: #37352F;
+    color: var(--text-primary);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 8px;
@@ -140,11 +219,11 @@ p {
     margin-bottom: 16px;
     line-height: 1.6;
     font-size: 16px;
-    color: #37352F;
+    color: var(--text-primary);
 }
 
 a {
-    color: rgb(0, 122, 255);
+    color: var(--accent-color);
     text-decoration: none;
     transition: opacity 0.15s ease;
 }
@@ -155,6 +234,129 @@ a:hover {
 
 strong, b {
     font-weight: 600;
+}
+
+/* ====================================
+   POSTS PAGE - NOTION GRID STYLE
+   ==================================== */
+.posts-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.posts-page-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.posts-page-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.post-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    border-color: var(--border-color-hover);
+    box-shadow: 0 4px 12px var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.post-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+}
+
+.post-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.post-date {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.post-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+
+.post-card-excerpt {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.post-card-footer {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.read-more {
+    font-size: 14px;
+    color: var(--accent-color);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.post-card:hover .read-more {
+    gap: 8px;
 }
 
 /* ====================================
@@ -174,13 +376,13 @@ strong, b {
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 3px solid rgba(55, 53, 47, 0.09);
+    border: 3px solid var(--border-color);
 }
 
 .hero-title {
     font-size: 56px;
     font-weight: 800;
-    color: #37352F;
+    color: var(--text-primary);
     margin-bottom: 16px;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -188,13 +390,13 @@ strong, b {
 
 .hero-subtitle {
     font-size: 18px;
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
     margin-bottom: 32px;
     font-weight: 400;
 }
 
 /* ====================================
-   POST LIST STYLING - NOTION CARDS
+   POST LIST STYLING - HOME PAGE
    ==================================== */
 .post-list {
     display: grid;
@@ -202,17 +404,17 @@ strong, b {
 }
 
 .post-item {
-    background-color: #FFFFFF;
+    background-color: var(--card-bg);
     padding: 32px;
     border-radius: 8px;
-    border: 1px solid rgba(55, 53, 47, 0.09);
+    border: 1px solid var(--border-color);
     transition: all 0.15s ease;
     cursor: pointer;
 }
 
 .post-item:hover {
-    border-color: rgba(55, 53, 47, 0.16);
-    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;
+    border-color: var(--border-color-hover);
+    box-shadow: var(--shadow-sm) 0px 0px 0px 1px, var(--shadow-sm) 0px 2px 4px;
     transform: translateY(-1px);
 }
 
@@ -221,7 +423,7 @@ strong, b {
 }
 
 .post-title a {
-    color: #37352F;
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 28px;
@@ -231,13 +433,13 @@ strong, b {
 }
 
 .post-title a:hover {
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
 }
 
 .post-meta {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
     margin-bottom: 12px;
     font-weight: 400;
 }
@@ -247,12 +449,12 @@ strong, b {
 }
 
 .post-meta .categories {
-    color: rgb(0, 122, 255);
+    color: var(--accent-color);
     font-weight: 500;
 }
 
 .post-excerpt {
-    color: rgba(55, 53, 47, 0.85);
+    color: var(--text-secondary);
     line-height: 1.6;
     font-size: 16px;
 }
@@ -263,14 +465,14 @@ strong, b {
 .section-header {
     font-size: 32px;
     font-weight: 800;
-    color: #37352F;
+    color: var(--text-primary);
     margin-bottom: 32px;
     text-align: center;
     letter-spacing: -0.01em;
 }
 
 .section-divider {
-    border-top: 1px solid rgba(55, 53, 47, 0.09);
+    border-top: 1px solid var(--border-color);
     margin: 64px 0;
 }
 
@@ -278,8 +480,8 @@ strong, b {
    CODE BLOCKS
    ==================================== */
 code {
-    background-color: rgba(135, 131, 120, 0.15);
-    color: #EB5757;
+    background-color: var(--code-bg);
+    color: var(--code-text);
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
     font-size: 85%;
     padding: 3px 6px;
@@ -288,8 +490,8 @@ code {
 }
 
 pre {
-    background-color: #F7F6F3;
-    border: 1px solid rgba(55, 53, 47, 0.09);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 24px;
     overflow-x: auto;
@@ -298,7 +500,7 @@ pre {
 
 pre code {
     background-color: transparent;
-    color: #37352F;
+    color: var(--text-primary);
     border: none;
     padding: 0;
     font-size: 14px;
@@ -310,8 +512,8 @@ pre code {
    FOOTER
    ==================================== */
 .site-footer-custom {
-    background-color: #F7F6F3;
-    border-top: 1px solid rgba(55, 53, 47, 0.09);
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
     padding: 48px 0;
     margin-top: 120px;
 }
@@ -323,11 +525,11 @@ pre code {
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: rgba(55, 53, 47, 0.65);
+    color: var(--text-secondary);
 }
 
 .footer-container a {
-    color: rgb(0, 122, 255);
+    color: var(--accent-color);
     font-weight: 500;
 }
 
@@ -364,28 +566,28 @@ pre code {
 }
 
 .home-buttons a:first-child {
-    background-color: #37352F;
-    color: #FFFFFF;
-    border: 1px solid #37352F;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--text-primary);
 }
 
 .home-buttons a:first-child:hover {
-    background-color: rgba(55, 53, 47, 0.85);
+    opacity: 0.85;
     transform: translateY(-1px);
-    box-shadow: rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+    box-shadow: 0 3px 6px var(--shadow-sm), 0 9px 24px var(--shadow-md);
     text-decoration: none;
 }
 
 .home-buttons a:last-child {
-    background-color: #FFFFFF;
-    color: #37352F;
-    border: 1px solid rgba(55, 53, 47, 0.16);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color-hover);
 }
 
 .home-buttons a:last-child:hover {
-    background-color: rgba(55, 53, 47, 0.03);
+    background-color: var(--bg-secondary);
     transform: translateY(-1px);
-    box-shadow: rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+    box-shadow: 0 3px 6px var(--shadow-sm), 0 9px 24px var(--shadow-md);
     text-decoration: none;
 }
 
@@ -396,21 +598,21 @@ pre code {
 }
 
 .view-all-link a {
-    color: rgb(0, 122, 255);
+    color: var(--accent-color);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
     padding: 10px 24px;
-    border: 1px solid rgba(55, 53, 47, 0.16);
+    border: 1px solid var(--border-color-hover);
     border-radius: 6px;
     display: inline-block;
     transition: all 0.15s ease;
 }
 
 .view-all-link a:hover {
-    background-color: rgba(55, 53, 47, 0.03);
-    border-color: rgba(55, 53, 47, 0.24);
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color-hover);
     transform: translateY(-1px);
 }
 
@@ -428,6 +630,10 @@ pre code {
 
     .footer-container {
         padding: 0 48px;
+    }
+
+    .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
 }
 
@@ -458,6 +664,14 @@ pre code {
         font-size: 16px;
     }
 
+    .posts-page-title {
+        font-size: 36px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
     h1 {
         font-size: 32px;
     }
@@ -482,5 +696,13 @@ pre code {
 
     .section-header {
         font-size: 28px;
+    }
+
+    .theme-toggle {
+        width: 48px;
+        height: 48px;
+        bottom: 24px;
+        right: 24px;
+        font-size: 20px;
     }
 }
