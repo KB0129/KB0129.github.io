@@ -39,5 +39,47 @@
       {{ site.footer_content }}
     </div>
   </footer>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <span class="theme-toggle-icon" id="theme-icon">🌙</span>
+  </button>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    (function() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to 'light'
+      const currentTheme = localStorage.getItem('theme') || 'light';
+
+      // Apply the theme on page load
+      if (currentTheme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+      }
+
+      // Toggle theme on button click
+      themeToggle.addEventListener('click', function() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme');
+        localStorage.setItem('theme', newTheme);
+
+        // Update icon with animation
+        if (newTheme === 'dark') {
+          themeIcon.textContent = '☀️';
+        } else {
+          themeIcon.textContent = '🌙';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
