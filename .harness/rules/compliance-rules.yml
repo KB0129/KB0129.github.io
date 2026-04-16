@@ -1,0 +1,222 @@
+# Content Management Harness - Validation Rules
+# Purpose: Enforce company policy compliance and authentic writing style
+
+# =============================================================================
+# SECURITY & COMPLIANCE RULES
+# =============================================================================
+
+security:
+  # Sensitive keywords that indicate internal/unreleased information
+  sensitive_keywords:
+    - "staging"
+    - "internal"
+    - "confidential"
+    - "private"
+    - "alpha"
+    - "beta" # Only if referring to unreleased UiPath features
+    - "pre-release"
+    - "not public"
+    - "NDA"
+
+  # Block internal URLs and environments
+  blocked_url_patterns:
+    - "*.internal.uipath.com"
+    - "staging.uipath.com"
+    - "dev.uipath.com"
+    - "localhost"
+    - "127.0.0.1"
+    - "10.*.*.*"
+    - "192.168.*.*"
+
+  # Allowed public UiPath resources
+  allowed_url_patterns:
+    - "docs.uipath.com"
+    - "cloud.uipath.com"
+    - "www.uipath.com"
+    - "forum.uipath.com"
+    - "academy.uipath.com"
+
+  # Detect exposed credentials/secrets
+  credential_patterns:
+    - "api[_-]?key"
+    - "access[_-]?token"
+    - "secret[_-]?key"
+    - "password"
+    - "client[_-]?secret"
+    - "bearer [a-zA-Z0-9]+"
+
+  # Internal code/config patterns
+  internal_patterns:
+    - "VITE_ACCESS_TOKEN=ey"  # Actual tokens
+    - "UIPATH_ACCESS_TOKEN=ey"
+    - "Bearer ey"
+    - "internal-"
+    - "private-"
+
+# =============================================================================
+# WRITING STYLE RULES (Authenticity & Voice)
+# =============================================================================
+
+writing_style:
+  # Detect LLM-generated writing patterns
+  llm_indicators:
+    severity: warning  # Don't block, but warn
+    patterns:
+      # Common LLM phrases
+      - "it's important to note that"
+      - "it's worth noting"
+      - "in today's digital landscape"
+      - "in conclusion"
+      - "to sum up"
+      - "leverage the power of"
+      - "harness the potential"
+      - "revolutionize"
+      - "game-changer"
+      - "seamlessly"
+      - "robust solution"
+      - "cutting-edge"
+      - "state-of-the-art"
+
+      # Corporate buzzwords
+      - "synergy"
+      - "paradigm shift"
+      - "best-in-class"
+      - "world-class"
+      - "enterprise-grade"
+
+      # Overly formal transitions
+      - "furthermore"
+      - "moreover"
+      - "subsequently"
+      - "consequently"
+      - "thus"
+
+  # Detect overly promotional UiPath content
+  promotional_indicators:
+    severity: warning
+    patterns:
+      - "UiPath.*leading.*platform"
+      - "UiPath.*best.*automation"
+      - "UiPath.*revolutionary"
+      - "powered by UiPath"  # Unless genuinely describing app
+
+    # Warn if too many UiPath mentions
+    max_uipath_mentions: 10  # per post
+
+  # Encourage personal voice
+  voice_guidelines:
+    encouraged:
+      - "I tried"
+      - "I found"
+      - "I struggled"
+      - "I learned"
+      - "In my experience"
+      - "What worked for me"
+      - "Here's how I"
+
+    discouraged:
+      - "one should"
+      - "users can"
+      - "developers are encouraged"
+      - "it is recommended"
+
+# =============================================================================
+# CONTENT STRUCTURE RULES
+# =============================================================================
+
+content_structure:
+  # Required frontmatter fields
+  required_frontmatter:
+    - layout
+    - title
+    - date
+    - categories
+    - excerpt
+
+  # Optional but recommended
+  recommended_frontmatter:
+    - tags
+    - author
+
+  # Category restrictions
+  allowed_categories:
+    - "UiPath"
+    - "React"
+    - "TypeScript"
+    - "JavaScript"
+    - "Python"
+    - "Automation"
+    - "AI"
+    - "DevOps"
+    - "Tutorial"
+    - "Personal"
+
+  # Excerpt guidelines
+  excerpt:
+    min_length: 50
+    max_length: 200
+    avoid_llm_style: true
+
+# =============================================================================
+# IMAGE & ASSET RULES
+# =============================================================================
+
+assets:
+  # Image size limits
+  max_image_size_mb: 5
+
+  # Recommended image formats
+  allowed_formats:
+    - "png"
+    - "jpg"
+    - "jpeg"
+    - "gif"
+    - "svg"
+
+  # Check for internal screenshots
+  screenshot_validation:
+    - check_for_internal_urls: true
+    - check_for_staging_env: true
+    - check_for_employee_names: true
+
+# =============================================================================
+# VALIDATION SEVERITY LEVELS
+# =============================================================================
+
+severity_levels:
+  error:    # Blocks publication
+    - security.sensitive_keywords
+    - security.blocked_url_patterns
+    - security.credential_patterns
+    - content_structure.required_frontmatter
+
+  warning:  # Shows warning, doesn't block
+    - writing_style.llm_indicators
+    - writing_style.promotional_indicators
+
+  info:     # Helpful suggestions
+    - writing_style.voice_guidelines
+    - content_structure.recommended_frontmatter
+
+# =============================================================================
+# CUSTOM RULES FOR KYUNGBIN'S BLOG
+# =============================================================================
+
+custom:
+  # Your specific preferences
+  personal_style:
+    message: "Write like yourself, not like a product page"
+
+  uipath_guidelines:
+    message: |
+      - Only mention UiPath when genuinely relevant to the post
+      - Avoid marketing language about UiPath products
+      - Focus on technical implementation and personal experience
+      - Link to official docs only when necessary for readers
+
+  preferred_tone:
+    message: |
+      ✅ Good: "I ran into this bug when building..."
+      ✅ Good: "Here's what I learned after debugging for 2 hours..."
+      ❌ Avoid: "UiPath provides a comprehensive solution..."
+      ❌ Avoid: "This cutting-edge platform enables users to..."

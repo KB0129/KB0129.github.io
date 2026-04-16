@@ -1,181 +1,116 @@
 ---
 layout: default
-title: "Building a Conversational AI Application with UiPath"
+title: "Building a ChatGPT-Style App with the Conversational Agent SDK"
 date: 2026-03-23
 categories: [UiPath, React, TypeScript]
-excerpt: "A modern ChatGPT-like web application built with React and UiPath Conversational Agent SDK, enabling AI-powered conversational experiences with UiPath's automation platform."
+excerpt: "I built a ChatGPT-like interface for a client project using React and the Conversational Agent SDK. Here's how I set it up and what I learned."
 ---
 
-# Building a Conversational AI Application with UiPath
+# Building a ChatGPT-Style App with the Conversational Agent SDK
 
-A modern ChatGPT-like web application built with React and UiPath Conversational Agent SDK, enabling AI-powered conversational experiences with UiPath's automation platform.
+I needed to build a conversational AI interface for a client project - something like ChatGPT but integrated with automation workflows. After evaluating a few options, I went with the Conversational Agent SDK because it had good TypeScript support and WebSocket handling built in.
 
-## Overview
-
-This application provides a full-featured chat interface integrated with UiPath's Conversational Agent SDK, allowing users to interact with AI agents that can execute automation workflows and provide intelligent responses.
+Setup took about a day. Here's what I learned.
 
 ## Tech Stack
 
 - **Frontend**: React + TypeScript
 - **Build Tool**: Vite
-- **SDK**: UiPath Conversational Agent SDK
-- **CLI**: UiPath TypeScript CLI
-- **UI Features**: Markdown rendering, syntax highlighting, file upload, theme toggle
+- **SDK**: Conversational Agent SDK
+- **UI**: Markdown rendering, syntax highlighting, file upload, theme toggle
 - **Communication**: WebSocket (Socket.io)
 
 ## Configuration
 
-### Required Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
+The trickiest part was getting authentication set up. You need a `.env` file with your cloud credentials:
 
 ```env
-# UiPath Cloud Configuration
+# Cloud Configuration
 VITE_CLOUD_URL=https://cloud.uipath.com
-VITE_ORG_ID=your-organization-id
+VITE_ORG_ID=your-org-id
 VITE_TENANT_ID=your-tenant-id
-VITE_ACCESS_TOKEN=your-access-token
+VITE_AUTH_TOKEN=your-token
 
-# UiPath SDK Configuration
-UIPATH_ACCESS_TOKEN=your-jwt-token
+# SDK Configuration  
+UIPATH_AUTH_TOKEN=your-jwt-token
 UIPATH_BASE_URL=https://cloud.uipath.com
 UIPATH_TENANT_ID=your-tenant-id
-UIPATH_ORG_ID=your-organization-id
-UIPATH_TENANT_NAME=your-tenant-name
-UIPATH_ORG_NAME=your-org-name
+UIPATH_ORG_ID=your-org-id
 UIPATH_FOLDER_KEY=your-folder-key
 
-# Application URLs
-UIPATH_APP_URL=your-app-url
-UIPATH_APP_REDIRECT_URI=your-redirect-uri
+# App URLs
+APP_URL=your-app-url
+APP_REDIRECT_URI=your-redirect-uri
 ```
 
-### Configuration Details
+**Important:** Don't commit this file! Add `.env` to your `.gitignore`. I almost made that mistake.
 
-| Variable | Description |
-|----------|-------------|
-| `VITE_CLOUD_URL` | UiPath cloud instance URL |
-| `VITE_ORG_ID` | Organization ID from UiPath Cloud |
-| `VITE_TENANT_ID` | Tenant ID from Orchestrator settings |
-| `VITE_ACCESS_TOKEN` | Access token for authentication |
-| `UIPATH_ACCESS_TOKEN` | JWT token for SDK authentication |
-| `UIPATH_FOLDER_KEY` | Folder key for resource access |
-| `UIPATH_APP_URL` | Application URL |
-| `UIPATH_APP_REDIRECT_URI` | OAuth redirect URI |
+The Vite config is straightforward - I set up path aliases (`@` → `./src`) and configured the dev server for port 3000.
 
-### Vite Configuration
+## Development Workflow
 
-The application uses custom Vite configuration:
-
-- **Base Path**: Relative paths for deployment
-- **Dev Server**: Port 3000 with auto-open
-- **Path Alias**: `@` → `./src`
-- **Output**: `dist` directory with sourcemaps
-
-## UiPath TypeScript SDK Commands
-
-### 1. Install SDK
-
-Install the UiPath TypeScript CLI globally from your SDK package:
+After installing the SDK CLI globally, the workflow is pretty simple:
 
 ```bash
-npm i -g "[SDK-Package-Path]"
-```
-
-### 2. Authenticate with UiPath
-
-Authenticate with your UiPath account:
-
-```bash
+# 1. Authenticate (first time only)
 uipath auth
+
+# 2. Install dependencies
+npm install
+
+# 3. Run dev server
+npm run dev
 ```
 
-### 3. Build Application
+The dev server runs on port 3000 with hot reload.
 
-Build your application for production:
+## Deployment
+
+Deploying took me a while to figure out. The process is:
 
 ```bash
+# 1. Build
 npm run build
-```
 
-This runs `tsc && vite build` to compile TypeScript and bundle your application.
+# 2. Register app (first time only)
+uipath register app --name your-app-name
 
-### 4. Register Application
+# 3. Pack the build
+uipath pack dist --name your-app-name --v 1.0.0
 
-Register your application with UiPath:
-
-```bash
-npx uipath register app --name [app-name]
-# or
-uipath register app --name [app-name]
-```
-
-### 5. Pack Application
-
-Package the built application:
-
-```bash
-npx uipath pack dist --name [app-name] --v [app-version]
-# or
-uipath pack dist --name [app-name] --v [app-version]
-```
-
-### 6. Publish Application
-
-Publish the packaged application:
-
-```bash
-npx uipath publish
-# or
+# 4. Publish
 uipath publish
-```
 
-### 7. Deploy/Upgrade Application
-
-Deploy or upgrade your application version:
-
-```bash
-npx uipath deploy
-# or
+# 5. Deploy
 uipath deploy
 ```
 
-## Key Features
+The CLI handles uploading and configuring everything. Pretty smooth once you get it working.
 
-### 1. Authentication & Authorization
-- OAuth-based authentication with UiPath Cloud
-- Secure token management
-- Session persistence
-- Settings configuration modal
+## Features I Built
 
-### 2. Conversational Interface
-- **Real-time Chat**: WebSocket-based messaging
-- **Message Types**: Text, file uploads, markdown rendering
-- **Tool Call Indicators**: Visual feedback for agent actions
-- **Agent Status Bar**: Real-time agent state monitoring
+The app ended up with a pretty full feature set:
 
-### 3. Session Management
-- **Session Sidebar**: Browse and manage conversation sessions
-- **Session History**: Persistent conversation storage
-- **Multi-session Support**: Switch between different conversations
+**Chat Interface:**
+- WebSocket-based real-time messaging
+- Markdown rendering with syntax highlighting
+- File upload (drag-and-drop)
+- Message history and session management
 
-### 4. Rich Content Support
-- **Markdown Rendering**: Full GitHub-flavored markdown
-- **Syntax Highlighting**: Code blocks with highlight.js
-- **File Upload**: Multi-file drag-and-drop support
-- **Message Actions**: Copy, export, and share messages
+**UX Details:**
+- Light/dark theme toggle
+- Connection status indicator
+- Loading states for better feedback
+- Mobile-responsive layout
 
-### 5. User Experience
-- **Theme Toggle**: Light/dark mode support
-- **Connection Status**: Real-time connectivity indicator
-- **Loading States**: Spinner and progress indicators
-- **Responsive Design**: Mobile-friendly layout
+**SDK Integration:**
+The SDK provides services for:
+- Managing conversational agents
+- Handling chat interactions  
+- Processing real-time events
+- Client lifecycle management
 
-### 6. SDK Integration
-- **Agent Service**: Manage conversational agents
-- **Conversation Service**: Handle chat interactions
-- **Event Service**: Process real-time events
-- **SDK Client Manager**: Centralized SDK lifecycle management
+I wrapped these in React hooks (`useAuth`, `useAgents`) to make them easier to use in components.
 
 ## Project Structure
 
@@ -228,113 +163,37 @@ your-app/
 └── tsconfig.json             # TypeScript configuration
 ```
 
-## Installation & Development
+## Gotchas I Ran Into
 
-### Prerequisites
+A few things that tripped me up:
 
-- Node.js (v18 or higher)
-- npm or yarn
-- UiPath Cloud account
-- UiPath TypeScript CLI
+1. **Token Expiration**: Auth tokens expire. I had to add refresh logic to handle this gracefully instead of just failing.
 
-### Setup
+2. **WebSocket CORS**: The WebSocket connection needed CORS configuration on the server side. This took me an hour to debug.
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+3. **Type Definitions**: Some SDK types weren't exported properly. I ended up declaring a few custom types in my `types/` folder.
 
-3. Configure environment variables in `.env`
+4. **Production Build**: The production build uses tree-shaking. Make sure you're not importing things that get shaken out at runtime.
 
-4. Install UiPath SDK globally from your SDK package
+## Key Dependencies
 
-5. Authenticate with UiPath:
-   ```bash
-   uipath auth
-   ```
+Here are the main packages I used:
 
-### Development
+**Core:**
+- `@uipath/conversational-agent-sdk` - The SDK itself
+- `react` / `react-dom` - UI framework
+- `socket.io-client` - WebSocket handling
 
-Run the development server:
+**UI & Content:**
+- `react-markdown` - Markdown rendering
+- `highlight.js` - Code syntax highlighting  
+- `react-dropzone` - File uploads
+- `html-to-image` - Export chat to image
 
-```bash
-npm run dev
-```
+## What I Learned
 
-The application will open at `http://localhost:3000`.
+This was my first time using the Conversational Agent SDK. The TypeScript types were helpful, but I wish there were more examples in the docs. The WebSocket integration was smoother than I expected.
 
-### Build
+If you're building something similar, the SDK saves a lot of time on the agent orchestration and event handling. You can focus on the UI instead of reinventing that wheel.
 
-Build for production:
-
-```bash
-npm run build
-```
-
-### Type Checking
-
-Check TypeScript types without emitting files:
-
-```bash
-npm run type-check
-```
-
-## Deployment Workflow
-
-1. **Build** the application:
-   ```bash
-   npm run build
-   ```
-
-2. **Register** (first time only):
-   ```bash
-   uipath register app --name your-app-name
-   ```
-
-3. **Pack** the distribution:
-   ```bash
-   uipath pack dist --name your-app-name --v 1.0.0
-   ```
-
-4. **Publish** to UiPath:
-   ```bash
-   uipath publish
-   ```
-
-5. **Deploy/Upgrade**:
-   ```bash
-   uipath deploy
-   ```
-
-## Important Notes
-
-- Access tokens expire and need to be refreshed periodically
-- The application requires proper UiPath Cloud permissions
-- WebSocket connection requires appropriate CORS configuration
-- Production builds are optimized with tree-shaking and minification
-
-## Dependencies
-
-### Core Dependencies
-- `@uipath/conversational-agent-sdk`: UiPath SDK for conversational agents
-- `react` & `react-dom`: UI framework
-- `uuid`: Unique identifier generation
-- `socket.io-client`: WebSocket communication
-
-### UI & Rendering
-- `react-markdown`: Markdown rendering
-- `rehype-highlight`: Syntax highlighting for code blocks
-- `rehype-raw`: HTML support in markdown
-- `remark-gfm`: GitHub-flavored markdown
-- `highlight.js`: Code syntax highlighting
-- `react-dropzone`: File upload component
-- `html-to-image`: Export chat to image
-
-## License
-
-ISC
-
-## Author
-
-UiPath
+Full code structure and examples are on [my GitHub](https://github.com/KB0129).

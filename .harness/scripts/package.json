@@ -1,0 +1,9 @@
+{
+  "name": "content-validator",
+  "version": "1.0.0",
+  "description": "Content validation script for blog harness",
+  "main": "validate-content.js",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
