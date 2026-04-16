@@ -1,0 +1,3 @@
+#!/bin/bash
+# Convenience wrapper for the harness CLI
+exec "$(dirname "$0")/.harness/harness.sh" "$@"
