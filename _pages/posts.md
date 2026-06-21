@@ -5,8 +5,8 @@ permalink: /posts/
 ---
 
 <div class="posts-header">
-  <h1 class="posts-page-title">📝 All Posts</h1>
-  <p class="posts-page-subtitle">{{ site.posts.size }} articles about software engineering and technology</p>
+  <h1 class="posts-page-title">Engineering Notes</h1>
+  <p class="posts-page-subtitle">{{ site.posts.size }} technical notes on software engineering, AI prompting, and web publishing.</p>
 </div>
 
 {% assign sorted_posts = site.posts | sort: 'date' | reverse %}

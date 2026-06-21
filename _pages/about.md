@@ -10,16 +10,16 @@ title: "About"
 
 Hello! I'm **Kyungbin Lee**, a Forward Deployed Engineer.
 
-This blog is my digital garden where I share my journey in software engineering and technology. 
+This blog is my digital garden for engineering notes, AI experiments, and implementation details I want to remember.
 
 ## What I Write About
 
-I cover a wide range of technical topics, including:
+I focus on practical technical topics, including:
 
-- **Software Engineering**: Best practices, design patterns, and architecture.
-- **Problem Solving**: Algorithms, data structures, and tackling complex challenges.
-- **New Technologies**: Exploring the latest tools and frameworks in the tech world.
-- **Career Growth**: Insights and lessons learned from my professional journey.
+- **Software Engineering**: Setup notes, design decisions, and deployment gotchas.
+- **AI Prompting**: Prompt engineering patterns, model behavior, and evaluation.
+- **Web Publishing**: GitHub Pages, Jekyll, and blog maintenance.
+- **Technical Experiments**: Practical notes from tools and frameworks I try.
 
 My goal is to document what I learn and share it with the community. Whether you're a beginner or an experienced developer, I hope you find something useful here.
 

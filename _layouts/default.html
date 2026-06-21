@@ -6,13 +6,13 @@
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ site.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
 
-  <!-- Custom Notion-inspired CSS -->
+  <!-- Custom Perplexity x Notion inspired CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   {% if site.head_custom %}{% include head_custom.html %}{% endif %}
 </head>
 <body>
-  <!-- Notion-style Header -->
+  <!-- Custom Header -->
   <header class="site-header-custom">
     <div class="header-container">
       <a href="{{ '/' | relative_url }}" class="site-title-custom">{{ site.title }}</a>
@@ -33,7 +33,7 @@
     </div>
   </main>
 
-  <!-- Notion-style Footer -->
+  <!-- Custom Footer -->
   <footer class="site-footer-custom">
     <div class="footer-container">
       {{ site.footer_content }}
@@ -42,7 +42,7 @@
 
   <!-- Theme Toggle Button -->
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-    <span class="theme-toggle-icon" id="theme-icon">🌙</span>
+    <span class="theme-toggle-icon" id="theme-icon">DARK</span>
   </button>
 
   <!-- Theme Toggle Script -->
@@ -58,10 +58,10 @@
       // Apply the theme on page load
       if (currentTheme === 'dark') {
         html.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
+        themeIcon.textContent = 'LIGHT';
       } else {
         html.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌙';
+        themeIcon.textContent = 'DARK';
       }
 
       // Toggle theme on button click
@@ -74,9 +74,9 @@
 
         // Update icon with animation
         if (newTheme === 'dark') {
-          themeIcon.textContent = '☀️';
+          themeIcon.textContent = 'LIGHT';
         } else {
-          themeIcon.textContent = '🌙';
+          themeIcon.textContent = 'DARK';
         }
       });
     })();

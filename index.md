@@ -9,10 +9,10 @@ title: Home
   </div>
   <h1 class="hero-title">Dev Log</h1>
   <p class="hero-subtitle">
-    Exploring software engineering and technology
+    Field notes on software engineering, AI prompting, GitHub Pages, and the implementation details worth remembering.
   </p>
   <div class="home-buttons">
-    <a href="{{ '/posts/' | relative_url }}">View Posts</a>
+    <a href="{{ '/posts/' | relative_url }}">Read Notes</a>
     <a href="{{ '/about/' | relative_url }}">About Me</a>
   </div>
 </div>

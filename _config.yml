@@ -15,10 +15,9 @@
 # in the templates via {{ site.myvariable }}.
 title: "Dev Log"
 email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: >-
+  Engineering notes on GitHub Pages, Jekyll, AI prompting, and practical
+  implementation details.
 twitter_username: username
 github_username: username
 url: "https://kb0129.github.io" # the base hostname & protocol for your site
@@ -64,7 +63,7 @@ plugins:
 
 # Footer content
 # appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2025 Kyungbin Lee."
+footer_content: "Copyright &copy; 2025 Kyungbin Lee. Engineering notes and technical experiments."
 
 defaults:
   # _posts
